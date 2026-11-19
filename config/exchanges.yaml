@@ -1,0 +1,118 @@
+# Exchange Configurations for CCXT
+
+exchanges:
+  binance:
+    enabled: true
+    api_key: ""  # Set via BINANCE_API_KEY env var
+    api_secret: ""  # Set via BINANCE_API_SECRET env var
+    sandbox: false
+    rate_limit: 1200
+    options:
+      defaultType: "spot"
+      adjustForTimeDifference: true
+    markets:
+      - "BTC/USDT"
+      - "ETH/USDT"
+      - "SOL/USDT"
+      - "AVAX/USDT"
+      - "BNB/USDT"
+      - "ARB/USDT"
+      - "OP/USDT"
+      - "APT/USDT"
+      - "SUI/USDT"
+      - "INJ/USDT"
+
+  binanceus:
+    enabled: false
+    api_key: ""
+    api_secret: ""
+    sandbox: false
+    rate_limit: 1200
+
+  bybit:
+    enabled: true
+    api_key: ""  # Set via BYBIT_API_KEY env var
+    api_secret: ""  # Set via BYBIT_API_SECRET env var
+    sandbox: false
+    rate_limit: 600
+    options:
+      defaultType: "spot"
+
+  kucoin:
+    enabled: true
+    api_key: ""  # Set via KUCOIN_API_KEY env var
+    api_secret: ""  # Set via KUCOIN_API_SECRET env var
+    api_passphrase: ""  # Set via KUCOIN_API_PASSPHRASE env var
+    sandbox: false
+    rate_limit: 300
+
+  kraken:
+    enabled: true
+    api_key: ""  # Set via KRAKEN_API_KEY env var
+    api_secret: ""  # Set via KRAKEN_API_SECRET env var
+    sandbox: false
+    rate_limit: 60
+
+  coinbase:
+    enabled: true
+    api_key: ""  # Set via COINBASE_API_KEY env var
+    api_secret: ""  # Set via COINBASE_API_SECRET env var
+    api_passphrase: ""  # Set via COINBASE_API_PASSPHRASE env var
+    sandbox: false
+    rate_limit: 100
+
+  okx:
+    enabled: true
+    api_key: ""  # Set via OKX_API_KEY env var
+    api_secret: ""  # Set via OKX_API_SECRET env var
+    api_passphrase: ""  # Set via OKX_API_PASSPHRASE env var
+    sandbox: false
+    rate_limit: 600
+
+  gateio:
+    enabled: true
+    api_key: ""  # Set via GATEIO_API_KEY env var
+    api_secret: ""  # Set via GATEIO_API_SECRET env var
+    sandbox: false
+    rate_limit: 600
+
+  mexc:
+    enabled: true
+    api_key: ""  # Set via MEXC_API_KEY env var
+    api_secret: ""  # Set via MEXC_API_SECRET env var
+    sandbox: false
+    rate_limit: 600
+
+# DEX Aggregators
+dex_aggregators:
+  dexscreener:
+    enabled: true
+    base_url: "https://api.dexscreener.com/latest/dex"
+    rate_limit: 300
+    chains:
+      - ethereum
+      - bsc
+      - polygon
+      - arbitrum
+      - optimism
+      - base
+      - avalanche
+      - solana
+
+  geckoterminal:
+    enabled: true
+    base_url: "https://api.geckoterminal.com/api/v2"
+    rate_limit: 30
+    chains:
+      - ethereum
+      - bsc
+      - polygon
+      - arbitrum
+      - optimism
+      - base
+      - avalanche
+      - solana
+
+# Default exchange for market data
+default_exchange: "binance"
+fallback_exchanges: ["bybit", "kucoin", "gateio", "mexc"]

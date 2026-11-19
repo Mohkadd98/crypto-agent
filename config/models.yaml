@@ -1,0 +1,75 @@
+# Model Configurations for Kilo API
+# Available models can be fetched from the Kilo API models endpoint
+
+models:
+  - id: "nvidia/nemotron-3-ultra-550b-a55b:free"
+    name: "Nemotron 3 Ultra"
+    provider: "kilo"
+    context_window: 128000
+    max_output_tokens: 8192
+    cost_per_million_input: 0.0
+    cost_per_million_output: 0.0
+    capabilities:
+      - reasoning
+      - analysis
+      - coding
+      - conversation
+    recommended_for:
+      - main_reasoning
+      - research
+      - planning
+
+  - id: "meta-llama/llama-3.1-405b-instruct:free"
+    name: "Llama 3.1 405B Instruct"
+    provider: "kilo"
+    context_window: 128000
+    max_output_tokens: 8192
+    cost_per_million_input: 0.0
+    cost_per_million_output: 0.0
+    capabilities:
+      - reasoning
+      - analysis
+      - conversation
+    recommended_for:
+      - main_reasoning
+      - research
+
+  - id: "google/gemma-2-27b-it:free"
+    name: "Gemma 2 27B IT"
+    provider: "kilo"
+    context_window: 8192
+    max_output_tokens: 8192
+    cost_per_million_input: 0.0
+    cost_per_million_output: 0.0
+    capabilities:
+      - classification
+      - summarization
+      - lightweight_tasks
+    recommended_for:
+      - lightweight
+      - classification
+      - summarization
+
+  - id: "mistralai/mistral-nemo:free"
+    name: "Mistral Nemo"
+    provider: "kilo"
+    context_window: 128000
+    max_output_tokens: 8192
+    cost_per_million_input: 0.0
+    cost_per_million_output: 0.0
+    capabilities:
+      - reasoning
+      - coding
+      - conversation
+    recommended_for:
+      - main_reasoning
+      - tool_use
+
+# Task to model mapping
+task_model_map:
+  reasoning: "nvidia/nemotron-3-ultra-550b-a55b:free"
+  research: "nvidia/nemotron-3-ultra-550b-a55b:free"
+  lightweight: "google/gemma-2-27b-it:free"
+  planning: "nvidia/nemotron-3-ultra-550b-a55b:free"
+  tool_selection: "mistralai/mistral-nemo:free"
+  classification: "google/gemma-2-27b-it:free"

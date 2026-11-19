@@ -1,0 +1,179 @@
+# Crypto Intelligence Agent Configuration
+
+app:
+  name: "CRYPTO INTELLIGENCE AGENT"
+  version: "1.0.0"
+  debug: false
+
+# Kilo API Configuration
+kilo_api:
+  base_url: "https://ai-gateway.kilo.ai/api/v1"
+  api_key: ""  # Set via environment variable KILO_API_KEY
+  default_model: "kilo-auto/free"
+  fallback_model: "kilo-auto/free"
+  max_tokens: 8192
+  temperature: 0.7
+  timeout: 60
+  max_retries: 3
+  stream_responses: true
+
+# Google Gemini (free tier) - preferred when GEMINI_API_KEY is set
+gemini_api:
+  base_url: "https://generativelanguage.googleapis.com/v1beta/openai/"
+  api_key: ""  # Set via environment variable GEMINI_API_KEY
+  default_model: "gemini-3.8-flash"
+
+# Model configurations for different tasks
+models:
+  reasoning:
+    model: "kilo-auto/free"
+    temperature: 0.5
+    max_tokens: 8192
+  research:
+    model: "kilo-auto/free"
+    temperature: 0.3
+    max_tokens: 16384
+  lightweight:
+    model: "kilo-auto/free"
+    temperature: 0.1
+    max_tokens: 2048
+
+# Market Data Providers
+market_data:
+  primary: "coingecko"
+  fallback: ["binance", "dexscreener", "geckoterminal"]
+  coingecko:
+    base_url: "https://api.coingecko.com/api/v3"
+    api_key: ""  # Optional, for higher rate limits
+    rate_limit: 10  # requests per minute (anonymous free tier is heavily throttled)
+  binance:
+    base_url: "https://api.binance.com"
+    api_key: ""
+    api_secret: ""
+    rate_limit: 1200  # requests per minute
+  dexscreener:
+    base_url: "https://api.dexscreener.com/latest/dex"
+    rate_limit: 300
+  geckoterminal:
+    base_url: "https://api.geckoterminal.com/api/v2"
+    rate_limit: 30
+
+# Blockchain RPC Endpoints (public defaults; override with *_RPC_URL env vars)
+blockchain:
+  ethereum:
+    rpc_url: "https://ethereum-rpc.publicnode.com"
+    fallback_rpcs: ["https://1rpc.io/eth", "https://eth.drpc.org"]
+  bsc:
+    rpc_url: "https://bsc-dataseed.binance.org"
+    fallback_rpcs: ["https://bsc-dataseed1.binance.org", "https://bsc-rpc.publicnode.com"]
+  polygon:
+    rpc_url: "https://polygon-bor-rpc.publicnode.com"
+    fallback_rpcs: ["https://polygon.drpc.org", "https://polygon-mainnet.public.blastapi.io"]
+  arbitrum:
+    rpc_url: "https://arb1.arbitrum.io/rpc"
+    fallback_rpcs: ["https://arbitrum-one-rpc.publicnode.com"]
+  optimism:
+    rpc_url: "https://mainnet.optimism.io"
+    fallback_rpcs: ["https://optimism-rpc.publicnode.com"]
+  base:
+    rpc_url: "https://mainnet.base.org"
+    fallback_rpcs: ["https://base-rpc.publicnode.com"]
+  avalanche:
+    rpc_url: "https://api.avax.network/ext/bc/C/rpc"
+    fallback_rpcs: ["https://avalanche-c-chain-rpc.publicnode.com"]
+  solana:
+    rpc_url: "https://api.mainnet-beta.solana.com"
+    fallback_rpcs: []
+
+# Scan Configuration
+scanner:
+  min_market_cap: 1000000  # $1M
+  max_market_cap: 10000000000  # $10B
+  min_volume_24h: 50000  # $50K
+  min_liquidity: 100000  # $100K
+  top_n_coins: 500
+  scan_interval_minutes: 15
+  timeframes: ["1h", "4h", "1d", "1w"]
+  lookback_days: 365
+
+# Technical Analysis Defaults
+technical:
+  rsi_period: 14
+  macd_fast: 12
+  macd_slow: 26
+  macd_signal: 9
+  ema_periods: [9, 21, 50, 200]
+  atr_period: 14
+  obv_period: 20
+  bb_period: 20
+  bb_std: 2
+
+# Risk Analysis
+risk:
+  max_drawdown_threshold: 0.5
+  volatility_threshold: 0.8
+  liquidity_risk_threshold: 0.3
+  concentration_risk_threshold: 0.4
+
+# Skill System
+skills:
+  auto_load: true
+  skills_dir: "skills"
+  enabled_by_default:
+    - market_scanner
+    - historical_analysis
+    - technical_analysis
+    - pattern_recognition
+    - breakout_detection
+    - risk_analysis
+    - tokenomics
+    - liquidity_analysis
+    - portfolio_analysis
+    # Free advanced skills (no extra API keys)
+    - derivatives_analysis
+    - market_breadth
+    - correlation_analysis
+    - sector_rotation
+    - order_book_analysis
+    - fibonacci_analysis
+    - volume_profile
+    - volatility_analysis
+    - momentum_scanner
+    - mean_reversion
+    - ichimoku
+    - wyckoff_analysis
+    - new_token_scanner
+    - gas_tracker
+    - trade_journal
+    - paper_trading
+    - strategy_learning
+
+# Database
+database:
+  type: "sqlite"
+  path: "data/agent.db"
+  pool_size: 5
+  echo: false
+
+# Logging
+logging:
+  level: "INFO"
+  format: "json"
+  file: "logs/agent.log"
+  max_size_mb: 100
+  backup_count: 5
+  console: true
+
+# Cost Management
+cost:
+  max_daily_usd: 10.0
+  max_monthly_usd: 200.0
+  track_usage: true
+  alert_threshold_pct: 80
+
+# Report Generation
+reports:
+  output_dir: "reports"
+  format: "markdown"
+  include_charts: false
+  auto_save: true

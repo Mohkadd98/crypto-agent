@@ -1,0 +1,38 @@
+# Virtual environments
+venv/
+.venv/
+
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+htmlcov/
+
+# Environment & secrets
+.env
+.env.*
+!.env.example
+config/api_keys.env
+
+# Databases, storage & logs
+*.db
+*.sqlite
+*.sqlite3
+data/
+logs/
+*.log
+
+# IDE
+.vscode/
+.idea/
+
+# OS
+.DS_Store
+
+# Reports output
+reports/*.json
+reports/*.csv
+reports/*.md

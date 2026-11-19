@@ -1,0 +1,350 @@
+# Skills Configuration
+
+# Core skills that ship with the agent
+core_skills:
+  market_scanner:
+    enabled: true
+    priority: 1
+    description: "Scans markets for opportunities based on volume, price action, and liquidity"
+    required_apis: ["coingecko", "binance"]
+    tools:
+      - get_market_overview
+      - search_coin
+      - get_coin_price
+      - get_market_cap
+      - get_trading_volume
+      - get_historical_ohlcv
+      - get_exchange_data
+
+  historical_analysis:
+    enabled: true
+    priority: 2
+    description: "Analyzes historical price data, patterns, and cycles"
+    required_apis: ["coingecko"]
+    tools:
+      - get_historical_ohlcv
+      - search_historical_patterns
+      - compare_coins
+      - calculate_potential_upside
+
+  technical_analysis:
+    enabled: true
+    priority: 3
+    description: "Calculates technical indicators and identifies setups"
+    required_apis: []
+    tools:
+      - calculate_rsi
+      - calculate_macd
+      - calculate_ema
+      - calculate_obv
+      - calculate_atr
+      - detect_support_resistance
+      - detect_breakout
+      - detect_accumulation
+      - analyze_market_structure
+
+  whale_tracking:
+    enabled: false
+    priority: 4
+    description: "Tracks whale wallets and large transactions"
+    required_apis: ["blockchain_rpc", "etherscan", "bscscan"]
+    tools:
+      - track_wallet
+      - analyze_wallet_history
+      - detect_whale_transactions
+      - analyze_exchange_flows
+      - identify_wallet_clusters
+      - monitor_token_holders
+
+  smart_money:
+    enabled: false
+    priority: 5
+    description: "Identifies smart money movements and institutional activity"
+    required_apis: ["blockchain_rpc", "nansen", "arkham"]
+    tools:
+      - track_wallet
+      - analyze_wallet_history
+      - identify_wallet_clusters
+      - analyze_exchange_flows
+
+  tokenomics:
+    enabled: true
+    priority: 6
+    description: "Analyzes token economics, supply dynamics, and unlocks"
+    required_apis: ["coingecko", "coinmarketcap", "messari"]
+    tools:
+      - evaluate_tokenomics
+      - analyze_token_unlocks
+      - get_market_cap
+      - get_coin_price
+
+  liquidity_analysis:
+    enabled: false
+    priority: 7
+    description: "Analyzes DEX liquidity, pool depth, and slippage"
+    required_apis: ["dexscreener", "geckoterminal", "blockchain_rpc"]
+    tools:
+      - get_exchange_data
+      - analyze_pool_liquidity
+
+  pattern_recognition:
+    enabled: true
+    priority: 8
+    description: "Recognizes chart patterns and historical similarities"
+    required_apis: ["coingecko"]
+    tools:
+      - search_historical_patterns
+      - compare_coins
+      - detect_accumulation
+
+  breakout_detection:
+    enabled: true
+    priority: 9
+    description: "Detects potential breakouts and retest setups"
+    required_apis: ["coingecko", "binance"]
+    tools:
+      - detect_breakout
+      - detect_support_resistance
+      - analyze_market_structure
+      - get_historical_ohlcv
+
+  risk_analysis:
+    enabled: true
+    priority: 10
+    description: "Calculates risk scores and scenario analysis"
+    required_apis: []
+    tools:
+      - calculate_risk_score
+      - rank_candidates
+      - evaluate_tokenomics
+      - analyze_token_unlocks
+
+  sentiment_analysis:
+    enabled: false
+    priority: 11
+    description: "Analyzes social sentiment and news sentiment"
+    required_apis: ["twitter", "reddit", "newsapi", "lunarcrush"]
+    tools:
+      - analyze_social_sentiment
+      - analyze_news_sentiment
+
+  portfolio_analysis:
+    enabled: true
+    priority: 12
+    description: "Portfolio tracking, performance, and optimization"
+    required_apis: ["coingecko"]
+    tools:
+      - compare_coins
+      - calculate_potential_upside
+      - calculate_risk_score
+      - rank_candidates
+
+  # ---- Free advanced skills (no extra API keys) ----
+  derivatives_analysis:
+    enabled: true
+    priority: 13
+    description: "Funding rate, open interest, long/short ratio and crowding signals from Binance futures"
+    required_apis: ["binance_public"]
+    tools:
+      - get_derivatives_analysis
+      - analyze_order_book
+
+  market_breadth:
+    enabled: true
+    priority: 14
+    description: "Market breadth, advance/decline, participation and regime detection"
+    required_apis: ["coingecko"]
+    tools:
+      - get_market_breadth
+      - get_market_overview
+      - get_sector_performance
+
+  correlation_analysis:
+    enabled: true
+    priority: 15
+    description: "Return correlation matrix and BTC beta for diversification"
+    required_apis: ["coingecko"]
+    tools:
+      - calculate_correlation_matrix
+      - compare_coins
+
+  sector_rotation:
+    enabled: true
+    priority: 16
+    description: "Category/sector performance to detect capital rotation"
+    required_apis: ["coingecko"]
+    tools:
+      - get_sector_performance
+      - scan_momentum
+
+  order_book_analysis:
+    enabled: true
+    priority: 17
+    description: "Order book depth, imbalance, bid/ask walls and spread"
+    required_apis: ["binance_public"]
+    tools:
+      - analyze_order_book
+      - get_exchange_data
+
+  fibonacci_analysis:
+    enabled: true
+    priority: 18
+    description: "Fibonacci retracement and extension levels with golden zone"
+    required_apis: ["coingecko"]
+    tools:
+      - calculate_fibonacci
+      - get_historical_ohlcv
+      - detect_support_resistance
+
+  volume_profile:
+    enabled: true
+    priority: 19
+    description: "Volume profile: POC, value area and high volume nodes"
+    required_apis: ["coingecko"]
+    tools:
+      - calculate_volume_profile
+      - get_historical_ohlcv
+
+  volatility_analysis:
+    enabled: true
+    priority: 20
+    description: "Realized volatility, ATR%, max drawdown and volatility regime"
+    required_apis: ["coingecko"]
+    tools:
+      - analyze_volatility
+      - calculate_atr
+      - get_historical_ohlcv
+
+  momentum_scanner:
+    enabled: true
+    priority: 21
+    description: "Multi-timeframe momentum scanner with acceleration"
+    required_apis: ["coingecko"]
+    tools:
+      - scan_momentum
+      - get_top_coins
+
+  mean_reversion:
+    enabled: true
+    priority: 22
+    description: "Mean-reversion z-score, Bollinger %B and RSI signals"
+    required_apis: ["coingecko"]
+    tools:
+      - calculate_mean_reversion
+      - calculate_rsi
+      - get_historical_ohlcv
+
+  ichimoku:
+    enabled: true
+    priority: 23
+    description: "Ichimoku cloud analysis (tenkan, kijun, senkou, chikou)"
+    required_apis: ["coingecko"]
+    tools:
+      - calculate_ichimoku
+      - get_historical_ohlcv
+
+  wyckoff_analysis:
+    enabled: true
+    priority: 24
+    description: "Wyckoff phase detection: accumulation/distribution, spring, upthrust"
+    required_apis: ["coingecko"]
+    tools:
+      - analyze_wyckoff
+      - detect_accumulation
+      - get_historical_ohlcv
+
+  new_token_scanner:
+    enabled: true
+    priority: 25
+    description: "Scan newly created DEX liquidity pools"
+    required_apis: ["geckoterminal", "dexscreener"]
+    tools:
+      - scan_new_pairs
+      - get_exchange_data
+
+  gas_tracker:
+    enabled: true
+    priority: 26
+    description: "Gas prices across supported chains"
+    required_apis: ["blockchain_rpc"]
+    tools:
+      - get_gas_prices
+
+  trade_journal:
+    enabled: true
+    priority: 27
+    description: "Record and analyze your own trades with PnL and win-rate stats"
+    required_apis: []
+    tools:
+      - add_trade
+      - close_trade
+      - list_trades
+      - get_trade_stats
+
+  paper_trading:
+    enabled: true
+    priority: 28
+    description: "Virtual trading accounts with realistic P&L, SL/TP, and performance analytics"
+    required_apis: []
+    tools:
+      - create_paper_account
+      - get_paper_account
+      - list_paper_accounts
+      - open_paper_position
+      - close_paper_position
+      - update_paper_positions
+      - get_paper_account_stats
+      - get_paper_trades
+
+  strategy_learning:
+    enabled: true
+    priority: 29
+    description: "Strategy creation, backtesting, optimization, and self-learning pattern discovery"
+    required_apis: []
+    tools:
+      - create_strategy
+      - get_strategy
+      - list_strategies
+      - backtest_strategy
+      - run_multi_symbol_backtest
+      - optimize_strategy_parameters
+      - discover_patterns
+      - get_learning_patterns
+      - validate_pattern
+      - get_backtest_results
+      - get_strategy_performance
+
+# Custom skills directory
+custom_skills_dir: "skills/custom_skills"
+
+# Skill loading order (by priority)
+load_order:
+  - market_scanner
+  - historical_analysis
+  - technical_analysis
+  - pattern_recognition
+  - breakout_detection
+  - risk_analysis
+  - tokenomics
+  - portfolio_analysis
+  - whale_tracking
+  - smart_money
+  - liquidity_analysis
+  - sentiment_analysis
+  - derivatives_analysis
+  - market_breadth
+  - correlation_analysis
+  - sector_rotation
+  - order_book_analysis
+  - fibonacci_analysis
+  - volume_profile
+  - volatility_analysis
+  - momentum_scanner
+  - mean_reversion
+  - ichimoku
+  - wyckoff_analysis
+  - new_token_scanner
+  - gas_tracker
+  - trade_journal
+  - paper_trading
+  - strategy_learning
